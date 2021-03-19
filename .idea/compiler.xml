@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="doctor-registration.main" target="11" />
+      <module name="doctor-registration.test" target="11" />
+      <module name="medical-consultation-registration.main" target="11" />
+      <module name="medical-consultation-registration.test" target="11" />
+      <module name="patient-registration.main" target="11" />
+      <module name="patient-registration.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
