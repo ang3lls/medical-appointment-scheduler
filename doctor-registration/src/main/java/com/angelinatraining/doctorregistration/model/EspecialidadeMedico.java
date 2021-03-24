@@ -11,13 +11,11 @@ import javax.persistence.*;
 public class EspecialidadeMedico {
 
     @Id
-    @Column(name = "id_medico")
-    private Integer idMedico;
-
-    @Id
     @Column(name = "id_especialidade")
     private Integer idEspecialidade;
 
-    @Column(name = "descricao")
-    private String descricao;
+    @Id
+    @Column(name = "id_medico")
+    private Integer idMedico;
+
 }

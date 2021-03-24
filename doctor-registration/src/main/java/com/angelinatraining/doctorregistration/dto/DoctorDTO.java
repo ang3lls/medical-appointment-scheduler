@@ -19,4 +19,5 @@ public class DoctorDTO {
     public DoctorDTO(){
 
     }
+
 }

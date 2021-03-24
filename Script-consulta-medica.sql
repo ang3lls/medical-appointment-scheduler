@@ -29,6 +29,7 @@ use microservico_cadastro_medico;
 
 create table medico(
 	id_medico int not null auto_increment,
+	id_especialidade int,
 	nome varchar(60),
 	primary key(id_medico)
 );
@@ -43,6 +44,8 @@ create table especialidades(
 	primary key(id_especialidade)
 );
 
+select * from especialidades;
+
 drop database if exists microservico_especialidademedico;
 create database microservico_especialidademedico;
 use microservico_especialidademedico;
@@ -50,7 +53,6 @@ use microservico_especialidademedico;
 create table especialidademedico(
 	id_medico int not null,
 	id_especialidade int not null,
-	descricao varchar(80)
 );
 
 	

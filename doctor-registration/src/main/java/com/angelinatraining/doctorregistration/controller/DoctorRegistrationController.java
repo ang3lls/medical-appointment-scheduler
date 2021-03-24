@@ -18,7 +18,7 @@ public class DoctorRegistrationController {
     private DoctorRegistrationService doctorRegistrationService;
 
     @PostMapping("/save")
-    public ResponseEntity<Doctor> saveMedico(@RequestBody Doctor doctor){
+    public ResponseEntity<Doctor> saveMedico(@RequestBody Doctor doctor) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(doctorRegistrationService.gravarMedico(doctor));
     }
 
@@ -31,8 +31,8 @@ public class DoctorRegistrationController {
             doctorDTO = new DoctorDTO();
         }
         else{
-            doctorDTO = new DoctorDTO(doctor.getId(), doctor.getNome(),
-                    doctor.getListaEspecialidades());
+            doctorDTO = new DoctorDTO(doctor.getId_medico(), doctor.getNome(),
+                    doctor.getIdsEspecialidades());
         }
         return ResponseEntity.status(HttpStatus.OK).body(doctorDTO);
     }

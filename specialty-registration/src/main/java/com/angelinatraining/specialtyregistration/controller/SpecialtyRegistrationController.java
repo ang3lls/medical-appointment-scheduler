@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/especialidade")
+@RequestMapping("/especialidade")
 public class SpecialtyRegistrationController {
 
     @Autowired
     private SpecialtyRegistationService specialtyRegistationService;
 
-    @PostMapping(name = "/save")
+    @PostMapping("/save")
     public ResponseEntity<Specialty> saveSpecialty(@RequestBody Specialty specialty){
         return ResponseEntity.status(HttpStatus.CREATED).body(specialtyRegistationService.gravarEspecialidade(specialty));
     }
 
-    @GetMapping(name = "/find/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<SpecialtyDTO> findSpecialty(@PathVariable Integer id){
         Specialty specialty = specialtyRegistationService.buscarEspecialidadePeloId(id);
 
@@ -31,18 +31,20 @@ public class SpecialtyRegistrationController {
             specialtyDTO = new SpecialtyDTO();
         }
         else{
-            specialtyDTO = new SpecialtyDTO(specialty.getId(), specialty.getDescricao());
+            specialtyDTO = new SpecialtyDTO();
+            specialtyDTO.setIdEspecialidade(specialty.getId());
+            specialtyDTO.setDescricao(specialty.getDescricao());
         }
         return ResponseEntity.status(HttpStatus.OK).body(specialtyDTO);
     }
 
-    @GetMapping(name = "/find-all")
+    @GetMapping("/find-all")
     public List<Specialty> findAllSpecialty(){
         return specialtyRegistationService.buscarTodasEspecialidades();
     }
 
-    @DeleteMapping(name = "/delete/{id}")
-    public ResponseEntity<Specialty> deleteSpecialty(){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Specialty> deleteSpecialty(@PathVariable Integer id){
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

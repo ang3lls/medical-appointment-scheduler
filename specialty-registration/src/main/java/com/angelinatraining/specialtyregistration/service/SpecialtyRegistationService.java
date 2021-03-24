@@ -30,16 +30,18 @@ public class SpecialtyRegistationService {
         return specialtyRegistrationRepository.findAll();
     }
 
-    public void deletarEspecialidade(Integer id) throws Exception {
+    public Specialty deletarEspecialidade(Integer id) throws Exception {
         verificaExistenciaEspecialidade(id);
         specialtyRegistrationRepository.deleteById(id);
+        return verificaExistenciaEspecialidade(id);
     }
 
     public Specialty verificaExistenciaEspecialidade(Integer id) throws Exception {
-        try(Specialty specialtyDelete = specialtyRegistrationRepository.getOne(id)) {
+        try{
+            Specialty specialtyDelete = specialtyRegistrationRepository.getOne(id);
             return specialtyDelete;
         }catch (Exception e){
-            throw new Exception("Especialidade não encontrado");
+            throw new Exception("Especialidade não encontrada");
         }
     }
 }
